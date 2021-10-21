@@ -6,14 +6,19 @@ const userSchema = mongoose.Schema({
     role: String,
     password: String,
     email: String,
-    phoneNumber: String,
-    section: {
+    phoneNumber: {
         type: String,
         default: 'Non spécifié'
     },
-    instrument: [String]
+    instrument: [String],
+    avatar: String,
+    section: {
+        type: String,
+        default: 'Non spécifié'
+    }    
 });
 
 const User = mongoose.model('User', userSchema);
+
 
 export default User;
