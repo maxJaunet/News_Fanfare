@@ -3,11 +3,11 @@ import axios from 'axios';
 import ImageLibrary from '../ImageLibrary';
 import Tooltip from '@mui/material/Tooltip';
 import { Container, FormControl, FormControlLabel, Grid, Paper, Radio, RadioGroup } from '@mui/material';
-import { mainTheme } from '../Templates/themes';
 import Button from '@mui/material/Button';
 import UserProfile from '../Users/UserProfile';
 import Events from '../Events/Events';
-import { Box } from '@mui/system';
+// import UserTable from '../Users/UserTable';
+import MembersTable from '../Admin/MembersTable/MembersTable';
 
 const Dashboard = () => {
 
@@ -29,7 +29,16 @@ useEffect(() => {
       setEventList(allEvents.data);
   })
 }, []); 
+
+useEffect(() => {
+  axios.get('http://localhost:5000/users')
+  .then((allUsers) => {
+      setUserList(allUsers.data);
+  })
+}, []); 
+
 const [eventList, setEventList] = useState([]);
+const [userList, setUserList] = useState([]);
 
       const currentUser = {
         fName: 'Test',
@@ -50,19 +59,14 @@ const [eventList, setEventList] = useState([]);
         profileImage: "https://images.unsplash.com/photo-1610622866955-5a9b32b850fd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80"
       }
     
-
-const {primaryColor, secondaryColor, profileColor, ternaryColor, primaryText, secondaryText, lightText} = mainTheme;
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('imgFile', selectedFile);
     formData.append('desc', descValue);    
-    formData.append('isPublic', visibilityAccess);    
-
-    axios.post('http://localhost:5000/images/upload', formData);
+    formData.append('isPublic', visibilityAccess) 
+    .then(axios.post('http://localhost:5000/images/upload', formData))
   }
-
 
   const handleFileSelect = (e) => {
     setSelectedFile(e.target.files[0])
@@ -71,7 +75,6 @@ const {primaryColor, secondaryColor, profileColor, ternaryColor, primaryText, se
   const handleChange = (e) => {
     setDescValue(e.target.value);
   }
-  
 
   return (
       <div>
@@ -81,36 +84,18 @@ const {primaryColor, secondaryColor, profileColor, ternaryColor, primaryText, se
         <Container>
       
           <Grid container justifyContent="space-between" spacing={3}>
-            <Grid item xs={12} sm={5}>
-              <Paper sx={{padding: '1rem', backgroundColor: profileColor}}>
+            <Grid item xs={12} sm={4}>
+              <Paper sx={{padding: '1rem 0 0 0'}}>
                 <h4 style={{marginTop: 0}}>Votre profil</h4>
                 <UserProfile user={currentUser} />
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={3}>
-              {/* <Paper>
-                <h4 style={{marginTop: 0}}>Votre profil</h4>
-                <TabContext value={value} >
-
-            <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }}>
-                <TabList onChange={handleChange} aria-label="tablist">
-                    <Tab label="Tous" value="All" onLoadStart={() => setFilteredList(userList)} />
-                    {userRoles.map((role, index) => {
-                    return <Tab label={role.roleName} value={role.roleName} key={index}/>
-                    })}
-                </TabList>
-            </Box>
-            <TabPanel value="All" aria-labelledby='tabList' className={classes.tabPanels}>
-                <AppBar position="static">
-                  <Users users={filteredList} theme={props.theme} />
-                </AppBar>
-            </TabPanel>
-            { userRoles.map((role, index) => <TabPanel value={role.roleName}  className={classes.tabPanels} key={index}>
-                <Users users={filteredList} theme={props.theme}/>
-            </TabPanel>) }
-            
-        </TabContext>
-              </Paper> */}
+            <Grid item xs={12} sm={4}>
+              <Paper sx={{padding: '1rem 0 0 0'}}>
+                <h4 style={{marginTop: 0}}>Membres</h4>
+                {/* <UserTable userList={userList} /> */}
+                <MembersTable members={userList} />
+              </Paper>
             </Grid>
             <Grid item xs={12} sm={3}>
               <Events cardTitle="Evénements à venir" events={eventList} />
@@ -125,7 +110,7 @@ const {primaryColor, secondaryColor, profileColor, ternaryColor, primaryText, se
                   <input type="file" onChange={handleFileSelect} filename="imgFile" /> 
                   <input type="text" id="desc" name="desc" onChange={handleChange} value={descValue} placeholder="Ajouter une description"/>
                   
-                  <Paper sx={{margin: '1rem 0', padding: '1rem'}}>
+                  <Paper sx={{margin: '1rem 0'}}>
                     <h4 style={{fontSize: '0.8rem'}}>Visibilité</h4>
                     <Grid container spacing={3}>
                     

@@ -4,10 +4,7 @@ import { Container, Grid, Typography } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-
-const Header = (props) => {
-    
-    
+const Header = (props) => {    
   return (
     <Container maxWidth="xl" className="appBar" style={props.theme} padding={10}>
         <Container maxWidth="lg">

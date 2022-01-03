@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem } from '@mui/material';
 import { useState } from 'react';
-import ActionButtons from './ActionButtons';
+import ActionButtons from './CoreUI/ActionButtons';
 
 const ImageLibrary = (props) => {
     const [hideStatus, setHideStatus] = useState(true);

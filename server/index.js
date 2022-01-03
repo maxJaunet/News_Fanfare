@@ -13,8 +13,6 @@ const CONNECTION_URL = process.env.MONGO_URL;
 
 const app = express();
 
-
-
 app.use(express.json({ limit: '25mb', extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());

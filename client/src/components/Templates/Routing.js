@@ -9,7 +9,6 @@ import About from '../pages/About';
 import Home from '../pages/Home';
 import { Grid } from '@mui/material';
 import './styles.css';
-import { mainTheme } from "./themes";
 import Dashboard from '../pages/Dashboard';
 
 const Routing = (props) => {
@@ -17,42 +16,49 @@ const Routing = (props) => {
   const navLinks = [
     {
       text: 'Accueil',
-      path: '/'
+      path: '/',
     },
     {
       text: 'Dashboard',
-      path: '/dashboard'
+      path: '/dashboard',
     },
     {
       text: 'Contact',
-      path: '/contact'
+      path: '/contact',
     },
     {
       text: 'A Propos',
-      path: '/about'
+      path: '/about',
     }
   ];
   
-  const { secondaryColor, secondaryText } = mainTheme;
-  const mouseOverHandler = (e) => {
-    e.target.style.backgroundColor = secondaryColor;
-    e.target.style.color = secondaryText
+  const mouseOverHandler = ({target}) => {
+    target.style.backgroundColor = '#FAAD2D';
+    target.style.color = '#FAAD2D';
   }
-  const mouseLeaveHandler = (e) => {
-    e.target.style.backgroundColor = 'white';
-    e.target.style.color = 'black';
+  const mouseLeaveHandler = ({target}) => {
+    target.style.backgroundColor = 'white';
+    target.style.color = 'black';
   }
+
   return (
     <Router>
-      <Grid sx={{marginTop: '1rem', position: 'absolute', top: '5rem', left: 0}} container justifyContent="center" columnSpacing={{ xs: 0, sm: 2, md: 3 }}>
+      <Grid sx={{marginTop: '1rem', position: 'absolute', top: '5rem', left: 0}}
+        container 
+        justifyContent="center"
+        columnSpacing={{ xs: 0, sm: 2, md: 3 }}
+      >
       {navLinks.map((item, index) => {
         return (
           <Grid item xs={2} key={index} textAlign="center" marginBottom={3}>
-            
             <Link 
               className="navLinks" 
               style={{
-                textDecorationLine: 'none', color: 'inherit', padding: '1rem 2.5rem', backgroundColor: 'white', borderRadius: '8px'
+                textDecorationLine: 'none',
+                color: 'inherit',
+                padding: '1rem 2.5rem',
+                backgroundColor: 'white',
+                borderRadius: '8px'
               }}
               onMouseOver={(e) => mouseOverHandler(e)}
               onMouseLeave={(e) =>  mouseLeaveHandler(e)}

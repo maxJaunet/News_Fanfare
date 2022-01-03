@@ -3,7 +3,7 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <Container maxWidth="lg" sx={{bgcolor: '#333333'}}>
+    <Container maxWidth="lg">
     <Grid container spacing={2} columns={16} justifyContent="center">
       <Grid item xs={4}>
         <h2>Contact</h2>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap');
+
+p {
+  margin: 0;
+}
+.tableName p {
+  padding: 1rem;
+  margin-left: 1.8rem;
+  text-align: start;
+  font-family: 'Merienda', cursive;
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+}
+.rowCategory p {
+  padding: 1.2rem;
+  text-align: start;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  color: grey;
+}
+.tableName p,
+.expandIcon:hover {
+  cursor: pointer;
+}
+.userAvatar {
+  padding: 0.5rem;
+}

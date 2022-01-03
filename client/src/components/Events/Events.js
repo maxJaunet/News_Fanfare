@@ -14,7 +14,6 @@ const Events = (props) => {
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = events.length;
     
-  
     const handleNext = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
@@ -27,10 +26,8 @@ const Events = (props) => {
       setActiveStep(step);
     };
 
-    
-    
   return (
-    <Paper sx={{padding: '1rem'}}>
+    <Paper sx={{padding: '1rem 0 0 0'}}>
     <h4 style={{marginTop: 0}}>{props.cardTitle}</h4>
       <AutoPlaySwipeableViews
         axis= 'x'
@@ -57,13 +54,12 @@ const Events = (props) => {
                   alt={step.imageAlt ? step.imageAlt : ""}
                 />
               </div>
-              
             ) : null}
             <div style={{backgroundColor: 'rgba(235, 235, 235, 0.5)', marginTop: 8, padding: 5 }}>
                   <h3 style={{paddingTop: 0}}>{step.name}</h3>
                   <p>{step.description}</p>
                   <p>{step.date}</p>
-                  <Button>Voir plus</Button>
+                  <Button sx={{paddingLeft: 0}}>Voir plus</Button>
             </div>
           </div>
         ))}
@@ -74,14 +70,14 @@ const Events = (props) => {
         activeStep={activeStep}
         nextButton={
           <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-            Next
+            Suiv
               <KeyboardArrowRight />
           </Button>
         }
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
               <KeyboardArrowLeft />
-            Back
+            Prec
           </Button>
         }
       />

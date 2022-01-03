@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Events from '../Events/Events';
 import NewsDisplay from '../News/NewsDisplay';
-import { mainTheme } from '../Templates/themes';
 import Gallery from '../Gallery/Gallery';
 
 const Home = () => {
@@ -34,32 +33,29 @@ const Home = () => {
     //   const [imageList, setImageList] = useState([]);
 
     const musicalEvents = eventList.filter(item => item.eventType === "musique");
-    const associationEvents = eventList.filter(item => item.eventType !== "musique");
-
-    const {primaryColor, secondaryColor, ternaryColor, primaryText, secondaryText, lightText} = mainTheme;
-    
+    const associationEvents = eventList.filter(item => item.eventType !== "musique");    
     
     return (
       <Container maxWidth="lg" sx={{marginTop: '4rem'}}>
         <Grid container spacing={{xs: 4}}>
             <Grid item xs={12} sm={8}>
-                <Paper sx={{padding: '1rem', paddingTop: 0.5, backgroundColor: secondaryColor}}>
-                <h4 style={{color: primaryText}}>Evénements à venir</h4>
+                <Paper sx={{padding: '1rem', paddingTop: 0.5}}>
+                <h4>Evénements à venir</h4>
                     <Grid container spacing={{xs: 4}}>
                         <Grid item xs={12} sm={6}>
-                            <Events cardTitle="Représentations" events={musicalEvents} bg={secondaryColor}/>
+                            <Events cardTitle="Représentations" events={musicalEvents} />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Events cardTitle="Association" events={associationEvents} bg={secondaryColor}/>
+                            <Events cardTitle="Association" events={associationEvents} />
                         </Grid>
                     </Grid>  
                 </Paper>
             </Grid>
             <Grid item xs={12} sm={4}>
-                <Paper sx={{padding: '1rem', paddingTop: 0.5, border: `3px solid ${primaryColor}`}}>
+                <Paper sx={{padding: '1rem', paddingTop: 0.5}}>
                     <Box>
                         <h4>Les news de la New's</h4>
-                        <NewsDisplay articles={articleList} subText={lightText} />
+                        <NewsDisplay articles={articleList} />
                     </Box>                    
                 </Paper>
             </Grid>

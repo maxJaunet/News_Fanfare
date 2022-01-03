@@ -7,11 +7,7 @@ import './styles.css';
 import { useStyles } from './components/Templates/fonts';
 import { useState } from 'react';
 
-
-
-
 const App = () => {
-
   const classes = useStyles();
   document.body.style.margin = 0;
   const {primaryColor, secondaryColor,ternaryColor, primaryText, secondaryText, lightText} = mainTheme;
@@ -26,10 +22,7 @@ const App = () => {
     color: lightText,
     fontFamily: 'Roboto'
   }
-
-  const [containerBackground, setcontainerBackground] = useState('');
   
-
   return (
     <div className={classes.App}>
       <Header theme={layoutTheme} className="appBar"/>
@@ -39,9 +32,8 @@ const App = () => {
          theme={navTheme} separatorColor={ternaryColor}
          className="routerGroup"
           />
+        </Container>
       </Container>
-      </Container>
-      
       <Footer theme={layoutTheme} />
    </div>
 

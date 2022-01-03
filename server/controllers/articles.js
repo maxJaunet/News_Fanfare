@@ -11,7 +11,7 @@ export const getArticles = async (req, res) => {
 
 export const createArticle = async (req, res) => {
     const articles = req.body;
-    const newArticle = new article (articles);  
+    const newArticle = new Article (articles);  
     try {
         await newArticle.save();
         res.status(201).json(newArticle);
