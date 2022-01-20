@@ -65,7 +65,7 @@ const [userList, setUserList] = useState([]);
     formData.append('imgFile', selectedFile);
     formData.append('desc', descValue);    
     formData.append('isPublic', visibilityAccess) 
-    .then(axios.post('http://localhost:5000/images/upload', formData))
+    .then(axios.post('http://localhost:5000/images/upload', formData));
   }
 
   const handleFileSelect = (e) => {
@@ -126,13 +126,11 @@ const [userList, setUserList] = useState([]);
                           <FormControlLabel value="public" control={<Radio size="small" />} label="Public" />
                         </Tooltip>
                       </Grid>
-
                       <Grid item>
                         <Tooltip placement="top" title="le contenu sera visible par vous uniquement">
                           <FormControlLabel value="private" control={<Radio size="small" />} label="Privé" />
                         </Tooltip>
                       </Grid>
-
                       <Grid item>
                         <Tooltip placement="top" title="le contenu sera visible par les membres uniquement">
                           <FormControlLabel value="members" control={<Radio size="small" />} label="Membres" />
@@ -150,7 +148,7 @@ const [userList, setUserList] = useState([]);
             <Grid item xs={12} sm={6} lg={4}>
               <Paper sx={{padding: '1rem'}}>
                 <h4 style={{marginTop: 0}}>Bibliothèque d'images</h4>
-                <ImageLibrary imageList={imageList} />
+                <ImageLibrary images={imageList} />
               </Paper>
             </Grid>
           </Grid>  

@@ -6,23 +6,23 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { Grid } from '@mui/material';
 
-const ActionButtons = ({targetComponent, hidden, alignment}) => {
+const ActionButtons = ({targetComponent, hideStatus, alignment}) => {
     
     const actions = [
         { 
             icon: <DeleteIcon fontSize="small" />,
             name: 'Supprimer',
-            color: targetComponent==="image" ? 'white' : '#bd3a3a'
+            color:'#bd3a3a'
         },
         { 
             icon: <EditIcon fontSize="small" />,
             name: 'Modifier',
-            color: targetComponent==="image" ? 'white' : '#59bd3a' 
+            color:'#59bd3a' 
         },
         { 
             icon: <RemoveRedEyeOutlinedIcon fontSize="small" />,
             name: targetComponent==="image" ? 'Voir profil' : 'Voir',
-            color: targetComponent==="image" ? 'white' : '#3a6fbd' 
+            color:'#3a6fbd' 
         }
     ];
     
@@ -44,7 +44,7 @@ const ActionButtons = ({targetComponent, hidden, alignment}) => {
       }
       else {
           return (
-            <Grid container style={{flexDirection: "column", alignItems: 'end', display: hidden && 'none', position: 'absolute'}} spacing={0}>
+            <Grid container style={{flexDirection: "column", alignItems: 'end', display: hideStatus && 'none', position: 'absolute'}} spacing={0}>
                 {actions.map((action) => (
                     <Grid item key={Math.random()}>
                     <Tooltip title={action.name} placement="left">
