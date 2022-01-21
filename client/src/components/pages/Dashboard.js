@@ -8,6 +8,8 @@ import UserProfile from '../Users/UserProfile';
 import Events from '../Events/Events';
 // import UserTable from '../Users/UserTable';
 import MembersTable from '../Admin/MembersTable/MembersTable';
+import CardTitle from '../CoreUI/CardTitle/CardTitle';
+import Card from '../Card/Card';
 
 const Dashboard = () => {
 
@@ -85,20 +87,13 @@ const [userList, setUserList] = useState([]);
       
           <Grid container justifyContent="space-between" spacing={3}>
             <Grid item xs={12} sm={4}>
-              <Paper sx={{padding: '1rem 0 0 0'}}>
-                <h4 style={{marginTop: 0}}>Votre profil</h4>
-                <UserProfile user={currentUser} />
-              </Paper>
+              <Card contentType="userProfile" loadedData={currentUser} cardTitle="Votre profil" />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Paper sx={{padding: '1rem 0 0 0'}}>
-                <h4 style={{marginTop: 0}}>Membres</h4>
-                {/* <UserTable userList={userList} /> */}
-                <MembersTable members={userList} />
-              </Paper>
+              <Card contentType="membersTable" loadedData={userList} cardTitle="Membres" />
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Events cardTitle="Evénements à venir" events={eventList} />
+              <Card contentType="events" loadedData={eventList} cardTitle="Evènements à venir" />
             </Grid>
           </Grid> 
 
@@ -146,10 +141,7 @@ const [userList, setUserList] = useState([]);
             </Grid>
 
             <Grid item xs={12} sm={6} lg={4}>
-              <Paper sx={{padding: '1rem'}}>
-                <h4 style={{marginTop: 0}}>Bibliothèque d'images</h4>
-                <ImageLibrary images={imageList} />
-              </Paper>
+              <Card contentType="imageLibrary" loadedData={imageList} cardTitle="Bibliothèque d'images" />
             </Grid>
           </Grid>  
         

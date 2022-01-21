@@ -7,10 +7,9 @@ import MobileStepper from '@mui/material/MobileStepper';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useState } from "react";
 
-const Events = (props) => {
+const Events = ({events}) => {
 
   const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-  const events = props.events;
     const [activeStep, setActiveStep] = useState(0);
     const maxSteps = events.length;
     
@@ -27,8 +26,7 @@ const Events = (props) => {
     };
 
   return (
-    <Paper sx={{padding: '1rem 0 0 0'}}>
-    <h4 style={{marginTop: 0}}>{props.cardTitle}</h4>
+      <div>
       <AutoPlaySwipeableViews
         axis= 'x'
         index={activeStep}
@@ -81,7 +79,7 @@ const Events = (props) => {
           </Button>
         }
       />
-      </Paper>
+    </div>
     )
 }
 
