@@ -11,8 +11,8 @@ import axios from "axios";
 import { useState } from "react";
 import './UploadingImageForm.css';
 
-const UploadImageForm = () => {
-
+const UploadImageForm = ({initialData}) => {
+  // initialData && console.log(initialData);
   const [selectedFile, setSelectedFile] = useState(null);
   const [descValue, setDescValue] = useState('');
   const [visibilityAccess, setVisibilityAccess] = useState('public');
@@ -26,6 +26,7 @@ const UploadImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+
     try {
       formData.append('imgFile', selectedFile);
       formData.append('desc', descValue);    
@@ -44,6 +45,7 @@ const UploadImageForm = () => {
         text: 'un problème est survenu'
       })
     }
+    
     setSelectedFile(null);
     setDescValue('');
     setVisibilityAccess("public");
@@ -63,7 +65,7 @@ const UploadImageForm = () => {
     <div>
       <form className="UploadImageForm" onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
         <input type="file" onChange={handleFileSelect} filename="imgFile" required /> 
-        <input type="text" id="desc" name="desc" onChange={handleChange} value={descValue} placeholder="Ajouter une description"/>       
+        <input type="text" id="desc" name="desc" onChange={handleChange} value={initialData ? initialData.desc : descValue} placeholder="Ajouter une description"/>       
         <Paper sx={{margin: '1rem 0'}}>
           <h4 style={{fontSize: '0.8rem'}}>Visibilité</h4>
           <Grid container spacing={3}>    
@@ -71,7 +73,7 @@ const UploadImageForm = () => {
               <RadioGroup
                 onChange={(e) => setVisibilityAccess(e.target.value)}
                 aria-label="visibility"
-                defaultValue="public"
+                defaultValue={initialData ? initialData.visibilityAccess : "public"}
                 name="visibilityAcess"
               >
                 <Grid item>
@@ -93,7 +95,7 @@ const UploadImageForm = () => {
             </FormControl>
           </Grid>
         </Paper>
-        <Button variant="contained" color="success" type="submit">Ajouter</Button>
+        <Button variant="contained" color="success" type="submit">{initialData ? "Modifier" : "Ajouter"}</Button>
       </form>
       {imageLoaded && <div className={imageLoaded.className}><p>{imageLoaded.text}</p></div>}
     </div>

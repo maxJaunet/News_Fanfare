@@ -22,6 +22,8 @@ export const postImage = async (req, res) => {
   };
 
 
+// Read All
+
 export const getImages = async (req, res) => {
     try {
         const allImages = await Image.find();
@@ -30,6 +32,47 @@ export const getImages = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 };
+
+// Read One
+
+export const getSingleImage = async (req, res) => {
+    try {
+        const targetedImage = await Image.findOne({_id: req.params.imageID});
+        res.status(200).json(targetedImage);
+        console.log('image found in database')
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+
+// UpdateOne / Dispatch
+
+export const editImage = async (req, res) => {
+  const filter = req.params.postId;
+  const update = req.body;
+  console.log(update);
+  try {
+    const updatedImage = await Post.findOneAndUpdate({_id: filter}, {$set: update}, {new: true});
+    res.status(200).json(updatedImage);
+  } catch (error) {
+    res.status(404).json({ message: String(error) })
+  }
+}
+
+
+// Delete One
+
+export const deleteImage = async (req, res) => {
+  try {
+    const targetedImage = await Image.deleteOne({_id: req.params.imageID});
+    res.status(200).json(targetedImage)
+    console.log('item successfully deleted');
+  }
+  catch(error) {
+    res.status(403).json({message: String(error)})
+  }
+}
 
 
 
