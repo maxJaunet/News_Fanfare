@@ -19,7 +19,7 @@ const ImageLibrary = ({images}) => {
           sx={{ height: 250 }}
           cols={3} rowHeight={130}
       >
-      {images.map(pic => {
+      {images && images.map(pic => {
         return (
         pic.file && 
         <ImageListItem key={pic._id}

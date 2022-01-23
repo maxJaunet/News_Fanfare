@@ -65,6 +65,7 @@ const Dashboard = () => {
             </Grid>
             <Grid item xs={12} sm={4}>
               <Card contentType="membersTable" loadedData={userList} cardTitle="Membres" />
+              <Card contentType="addMemberForm" cardTitle="Ajouter un membre" />
             </Grid>
             <Grid item xs={12} sm={3}>
               <Card contentType="events" loadedData={eventList} cardTitle="Evènements à venir" />
@@ -73,10 +74,10 @@ const Dashboard = () => {
 
           <Grid container sx={{marginTop: '2rem'}} spacing={3}>
             <Grid item xs={12} sm={6} lg={4}>
-              <Card contentType="uploadImageForm" loadedData={imageList} cardTitle="Ajouter une image" />
+              <Card contentType="uploadImageForm" cardTitle="Ajouter une image" />
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
-              <Card contentType="imageLibrary" loadedData={imageList} cardTitle="Bibliothèque d'images" />
+              <Card contentType="imageLibrary" cardTitle="Bibliothèque d'images" loadedData={imageList} />
             </Grid>
           </Grid>  
         
