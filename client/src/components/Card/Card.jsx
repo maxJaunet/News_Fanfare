@@ -1,5 +1,6 @@
 import { Paper } from "@mui/material";
 import MembersTable from "../Admin/MembersTable/MembersTable";
+import UploadImageForm from "../Admin/UploadImageForm/UploadImageForm";
 import CardTitle from "../CoreUI/CardTitle/CardTitle";
 import Events from "../Events/Events";
 import ImageLibrary from "../ImageLibrary";
@@ -13,7 +14,9 @@ const Card = ({contentType, loadedData, cardTitle}) => {
         {contentType === 'membersTable' && <MembersTable members={loadedData} />}
         {contentType === 'events' && <Events events={loadedData} />}
         {contentType === 'imageLibrary' && <ImageLibrary images={loadedData} />}
+        {contentType === 'uploadImageForm' && <UploadImageForm />}
     </Paper>
   )
 };
+
 export default Card;
