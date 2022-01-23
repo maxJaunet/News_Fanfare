@@ -4,9 +4,9 @@ import { Container, Grid, Typography } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-const Header = (props) => {    
+const Header = ({theme}) => {    
   return (
-    <Container maxWidth="xl" className="appBar" style={props.theme} padding={10}>
+    <Container maxWidth="xl" className="appBar" style={theme} padding={10}>
         <Container maxWidth="lg">
             <Grid container justifyContent="space-between" alignItems="center">
                 <Grid item sm={4} textAlign="left">
@@ -25,8 +25,7 @@ const Header = (props) => {
             </Grid>
         </Container>
     </Container>
-
-      
+  
   )
 }
 

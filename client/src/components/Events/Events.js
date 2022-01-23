@@ -7,7 +7,7 @@ import MobileStepper from '@mui/material/MobileStepper';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useState } from "react";
 
-const Events = ({events}) => {
+const Events = ({events, bg}) => {
 
   const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
     const [activeStep, setActiveStep] = useState(0);
@@ -33,7 +33,7 @@ const Events = ({events}) => {
         onChangeIndex={handleStepChange}
         enableMouseEvents
         interval={8500}
-        slideStyle={{backgroundColor: props.bg}}
+        slideStyle={{backgroundColor: bg}}
       >
         {events.map((step, index) => (
           <div key={index}>

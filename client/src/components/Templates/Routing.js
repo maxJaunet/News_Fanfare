@@ -11,7 +11,7 @@ import { Grid } from '@mui/material';
 import './styles.css';
 import Dashboard from '../pages/Dashboard';
 
-const Routing = (props) => {
+const Routing = () => {
 
   const navLinks = [
     {

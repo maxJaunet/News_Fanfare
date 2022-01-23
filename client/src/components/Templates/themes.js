@@ -1,6 +1,4 @@
 
-
-
 export const mainTheme = {
     primaryColor: '#AE61E8',
     secondaryColor: '#FAAD2D',

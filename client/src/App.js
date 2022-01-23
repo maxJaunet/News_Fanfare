@@ -5,7 +5,6 @@ import { mainTheme } from './components/Templates/themes';
 import { Container } from '@mui/material';
 import './styles.css';
 import { useStyles } from './components/Templates/fonts';
-import { useState } from 'react';
 
 const App = () => {
   const classes = useStyles();
@@ -29,14 +28,12 @@ const App = () => {
       <Container maxWidth="xl">
         <Container maxWidth="lg">
         <Routing 
-         theme={navTheme} separatorColor={ternaryColor}
          className="routerGroup"
           />
         </Container>
       </Container>
       <Footer theme={layoutTheme} />
    </div>
-
    
   )
 }
