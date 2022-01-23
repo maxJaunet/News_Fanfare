@@ -6,7 +6,9 @@ import Card from '../Card/Card';
 const Dashboard = () => {
 
   const [imageList, setImageList] = useState([]);
-
+  const [eventList, setEventList] = useState([]);
+  const [userList, setUserList] = useState([]);
+  
   useEffect(() => {
       axios.get('http://localhost:5000/images')
           .then((allImages) => {
@@ -28,8 +30,7 @@ const Dashboard = () => {
     })
   }, []); 
 
-  const [eventList, setEventList] = useState([]);
-  const [userList, setUserList] = useState([]);
+
 
   // test user to be changed to dynamic current user
   const currentUser = {

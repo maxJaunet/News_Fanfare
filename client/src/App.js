@@ -9,18 +9,18 @@ import { useStyles } from './components/Templates/fonts';
 const App = () => {
   const classes = useStyles();
   document.body.style.margin = 0;
-  const {primaryColor, secondaryColor,ternaryColor, primaryText, secondaryText, lightText} = mainTheme;
+  const {primaryColor, secondaryText} = mainTheme;
 
   const layoutTheme = {
       backgroundColor: primaryColor,
       color: secondaryText,
       fontFamily: 'RocknRoll One'
   }
-  const navTheme = {
-    backgroundColor: secondaryColor,
-    color: lightText,
-    fontFamily: 'Roboto'
-  }
+  // const navTheme = {
+  //   backgroundColor: secondaryColor,
+  //   color: lightText,
+  //   fontFamily: 'Roboto'
+  // }
   
   return (
     <div className={classes.App}>

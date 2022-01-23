@@ -1,4 +1,4 @@
-import { Button, Paper } from "@mui/material";
+import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';

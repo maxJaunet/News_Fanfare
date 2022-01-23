@@ -22,7 +22,6 @@ const NewsDisplay = (props) => {
                 <p style={{color: "#5C5C5C"}}>{article.content}</p>
                 <p style={{color: props.subText}}>{article.date}</p>
                 <Button href="/articles">En savoir plus</Button>
-               
             </Paper>
             
         )
