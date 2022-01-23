@@ -67,7 +67,7 @@ const Home = () => {
                         <h4>Gallerie photos</h4>
                     </Box>
                     <Gallery  />       
-                    {/* images={imageList}            */}
+                    {/* images={imageList} */}
                 </Paper>
             </Grid>
         </Grid>
