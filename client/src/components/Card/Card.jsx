@@ -8,7 +8,7 @@ import UserProfile from "../Users/UserProfile";
 
 const Card = ({contentType, loadedData, cardTitle}) => {
    return (
-    <Paper sx={{padding: '1rem 0 0 0'}}>
+    <Paper sx={{padding: '1rem 0'}}>
       <CardTitle element="h4" label={cardTitle} />
         {contentType === 'userProfile' && <UserProfile user={loadedData} />}
         {contentType === 'membersTable' && <MembersTable members={loadedData} />}

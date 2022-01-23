@@ -2,7 +2,6 @@ import Image from '../models/images.js';
 
 
 export const postImage = async (req, res) => {
-  console.log(req.file);
     const newImage = new Image({
       visibilityAccess: req.body.visibilityAccess,
       desc: req.body.desc,
@@ -12,6 +11,7 @@ export const postImage = async (req, res) => {
     try {
       newImage.save()
       .then(() => {
+        console.log('image successfully posted');
         res.status(201).json(newImage);
       });
       

@@ -1,0 +1,6 @@
+.failureLoadedImage {
+  color: red;
+}
+.successfullyLoadedImage {
+  color: green;
+}

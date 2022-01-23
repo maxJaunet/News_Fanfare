@@ -12,7 +12,7 @@ const Dashboard = () => {
           .then((allImages) => {
               setImageList(allImages.data);
           })
-        }, []);
+        }, [imageList]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/events')
