@@ -7,7 +7,7 @@ import { Box } from '@mui/system';
 
 
 
-const UserProfile = (props) => {
+const UserProfile = ({user}) => {
     
     const handleDelete = () => {
         console.info('You clicked the delete icon.');
@@ -23,7 +23,7 @@ const UserProfile = (props) => {
                 width: '100%',
                 borderRadius: '8px'
             }}
-            src={props.user.profileImage}
+            src={user.profileImage}
         />
         <Grid container>
             <Grid item justifyContent="center">
@@ -42,7 +42,7 @@ const UserProfile = (props) => {
         </Grid>
         <Grid container>
            <Grid item>
-            <h2>{`${props.user.fName} ${props.user.lName}`}</h2>
+            <h2>{`${user.fName} ${user.lName}`}</h2>
            </Grid>
         </Grid>
             <hr style={{opacity: 0.5, width: '75%'}}/>
@@ -50,7 +50,7 @@ const UserProfile = (props) => {
            <Grid item>
             <h4>Instrument(s) :</h4>
                 <Stack direction="row" spacing={1}>
-                {props.user.instrument.map((instrument, index) => {
+                {user.instrument.map((instrument, index) => {
                     return (
                         <Chip key={index} label={instrument} onDelete={handleDelete} />
                     )
