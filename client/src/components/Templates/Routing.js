@@ -15,18 +15,22 @@ const Routing = (props) => {
 
   const navLinks = [
     {
+      id: '2250440',
       text: 'Accueil',
       path: '/',
     },
     {
+      id: '2250441',
       text: 'Dashboard',
       path: '/dashboard',
     },
     {
+      id: '2250442',
       text: 'Contact',
       path: '/contact',
     },
     {
+      id: '2250443',
       text: 'A Propos',
       path: '/about',
     }
@@ -48,9 +52,9 @@ const Routing = (props) => {
         justifyContent="center"
         columnSpacing={{ xs: 0, sm: 2, md: 3 }}
       >
-      {navLinks.map((item, index) => {
+      {navLinks.map(({id, text, path}) => {
         return (
-          <Grid item xs={2} key={index} textAlign="center" marginBottom={3}>
+          <Grid item xs={2} key={id} textAlign="center" marginBottom={3}>
             <Link 
               className="navLinks" 
               style={{
@@ -62,7 +66,7 @@ const Routing = (props) => {
               }}
               onMouseOver={(e) => mouseOverHandler(e)}
               onMouseLeave={(e) =>  mouseLeaveHandler(e)}
-              to={item.path}>{item.text}</Link>
+              to={path}>{text}</Link>
           </Grid>
           )
       })}

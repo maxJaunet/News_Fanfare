@@ -18,7 +18,6 @@ const MembersTable = ({ members }) => {
   const expandingHandler = (e, index) => {
     setRowIndex(rowIndex === 0 ? index + 1 : 0);
   };
- 
 
   return (
     <Paper
@@ -39,8 +38,8 @@ const MembersTable = ({ members }) => {
               '&:last-child td, &:last-child th': { border: 0 },
               borderBottom: '1px solid #dddddd',
               alignContent: 'center',
-              padding: 0,
               textAlign: 'left',
+              padding: '0 1rem'
             }}
           >
             <Grid item xs={1}>
