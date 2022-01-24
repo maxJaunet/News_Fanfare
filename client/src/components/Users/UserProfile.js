@@ -3,6 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { Box } from '@mui/system';
+import './UserProfile';
 
 
 
@@ -13,7 +14,7 @@ const UserProfile = ({user}) => {
         console.info('You clicked the delete icon.');
     };
   return (
-      <Container>
+      <Container sx={{paddingY: '1rem', maxHeight: '35rem', overflow: 'auto'}}>
         <Box
             component="img"
             sx={{
@@ -21,7 +22,7 @@ const UserProfile = ({user}) => {
                 display: 'block',
                 overflow: 'hidden',
                 width: '100%',
-                borderRadius: '8px'
+                borderRadius: '8px',
             }}
             src={user.profileImage}
         />

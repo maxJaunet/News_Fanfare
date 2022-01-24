@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react-hooks/recommended"
+  ],
+
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "parser": "babel-eslint",
+    "overrides": [{
+    "files": ["path/to/some/file.js", "path/to/some/folder/**.js"],
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  }]
+
+}
