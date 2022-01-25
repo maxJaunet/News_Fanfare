@@ -7,7 +7,8 @@ const eventSchema = mongoose.Schema({
     eventType: String,
     description: String,
     imagePath: String,
-    imageAlt: String
+    imageAlt: String,
+    type: String
 });
 
 const Event = mongoose.model('Event', eventSchema);

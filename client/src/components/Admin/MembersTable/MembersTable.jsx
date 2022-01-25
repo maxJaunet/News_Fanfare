@@ -10,13 +10,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ActionButtons from '../../CoreUI/ActionButtons';
 import './MembersTable.css';
 
-const MembersTable = ({ members }) => {
+const MembersTable = ({ members, onUserSelected }) => {
   const [rowIndex, setRowIndex] = useState(0);
-  const membersSortedByLastName = members.sort((a, b) =>
-    a.lName.localeCompare(b.lName)
-  );
+  const [isSelected, setIsSelected] = useState(false);
   const expandingHandler = (e, index) => {
-    setRowIndex(rowIndex === 0 ? index + 1 : 0);
+    setRowIndex(index);
+    setIsSelected(prevValue => !prevValue);
   };
 
   return (
@@ -28,12 +27,12 @@ const MembersTable = ({ members }) => {
       }}
     >
       {
-        membersSortedByLastName.map((member, index) => {
+        members.map((member, index) => {
         return (
           <Grid
             container
             className="tableRow"
-            key={member.id}
+            key={member._id ? member._id : (Math.random()*10)}
             sx={{
               '&:last-child td, &:last-child th': { border: 0 },
               borderBottom: '1px solid #dddddd',
@@ -57,44 +56,39 @@ const MembersTable = ({ members }) => {
                 </p>
               </div>
             </Grid>
-
-            <Collapse
-              in={rowIndex === index + 1}
-              timeout="auto"
-              unmountOnExit
-              sx={{
-                width: '100%',
-                paddingBottom: '5px'
-              }}
-            >
-              <Grid
-                container
-                justifyContent="center"
-                sx={{
-                  backgroundColor: 'rgb(230, 230, 256)',
-                  borderRadius: '3px',
-                  padding: '0 2rem',
-                }}
-              >
-                <Grid item xs={4}>
-                  <Tooltip title="Réduire">
-                    <ExpandMoreIcon
-                      onClick={() => setRowIndex(0)}
-                      className="expandIcon"
-                      style={{
-                        color: 'white',
-                        fontSize: '2rem',
-                        position: 'relative',
-                        top: '0.5rem',
-                        left: '2rem',
-                        transform: 'rotate(180deg)',
-                      }}
-                    />
-                  </Tooltip>
-                </Grid>
-                <ActionButtons alignment="horizontal" />
-              </Grid>  
-            </Collapse>
+            {
+              (isSelected && rowIndex === index) &&
+              (
+                <Grid
+                  className="collapse"
+                  container
+                  justifyContent="center"
+                  sx={{
+                    backgroundColor: 'rgb(230, 230, 256)',
+                    borderRadius: '3px',
+                    padding: '0 2rem',
+                  }}
+                >
+                  <Grid item xs={4}>
+                    <Tooltip title="Réduire">
+                      <ExpandMoreIcon
+                        onClick={(e) => setIsSelected(prevValue => !prevValue)}
+                        className="expandIcon"
+                        style={{
+                          color: 'white',
+                          fontSize: '2rem',
+                          position: 'relative',
+                          top: '0.5rem',
+                          left: '2rem',
+                          transform: 'rotate(180deg)',
+                        }}
+                      />
+                    </Tooltip>
+                  </Grid>
+                  <ActionButtons onSelectedTarget={onUserSelected} targetID={member._id} targetType='users' alignment="horizontal" />
+                </Grid> 
+              )
+            }
           </Grid>
         );
       })}

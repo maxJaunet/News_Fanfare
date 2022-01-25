@@ -15,7 +15,9 @@ const userSchema = mongoose.Schema({
     section: {
         type: String,
         default: 'Non spécifié'
-    }    
+    },
+    type: String
+
 });
 
 const User = mongoose.model('User', userSchema);

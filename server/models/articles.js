@@ -6,7 +6,8 @@ const articleSchema = mongoose.Schema({
     author: String,
     content: String,
     imagePath: String,
-    imageAlt: String
+    imageAlt: String,
+    type: String
 });
 
 const Article = mongoose.model('Article', articleSchema);

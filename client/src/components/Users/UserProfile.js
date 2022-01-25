@@ -7,7 +7,6 @@ import './UserProfile';
 
 
 
-
 const UserProfile = ({user}) => {
     
     const handleDelete = () => {

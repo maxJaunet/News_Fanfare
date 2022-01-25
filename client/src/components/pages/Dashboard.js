@@ -8,6 +8,7 @@ const Dashboard = () => {
   const [imageList, setImageList] = useState([]);
   const [eventList, setEventList] = useState([]);
   const [userList, setUserList] = useState([]);
+  const [targetedData, setTargetedData] = useState(null);
   
   useEffect(() => {
       axios.get('http://localhost:5000/images')
@@ -26,11 +27,17 @@ const Dashboard = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/users')
     .then((allUsers) => {
-        setUserList(allUsers.data);
+      const membersSortedByLastName = allUsers.data.sort((a, b) =>
+        a.lName && a.lName.localeCompare(b.lName)
+      );
+        setUserList(membersSortedByLastName);
     })
-  }, []); 
+  }, [userList]); 
 
-
+  const onTargetedDataSelected = (data) => {
+      data && setTargetedData(data);
+      console.log(data)
+  };
 
   // test user to be changed to dynamic current user
   const currentUser = {
@@ -64,8 +71,12 @@ const Dashboard = () => {
               <Card contentType="userProfile" loadedData={currentUser} cardTitle="Votre profil" />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Card contentType="membersTable" loadedData={userList} cardTitle="Membres" />
-              <Card contentType="addMemberForm" cardTitle="Ajouter un membre" />
+              <Card contentType="membersTable" onTargetedDataSelected={onTargetedDataSelected} loadedData={userList} cardTitle="Membres" />
+              <Card
+                contentType="addMemberForm"
+                cardTitle={(targetedData && targetedData.type === 'users') ? "Modifier Membre" : "Ajouter un membre"} 
+                initialData={(targetedData && targetedData.type === 'users') && targetedData} 
+              />
             </Grid>
             <Grid item xs={12} sm={3}>
               <Card contentType="events" loadedData={eventList} cardTitle="Evènements à venir" />
@@ -74,7 +85,7 @@ const Dashboard = () => {
 
           <Grid container sx={{marginTop: '2rem'}} spacing={3}>
             <Grid item xs={12} sm={6} lg={4}>
-              <Card contentType="uploadImageForm" cardTitle="Ajouter une image" />
+              <Card contentType="uploadImageForm" onTargetedDataSelected={onTargetedDataSelected} cardTitle="Ajouter une image" />
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
               <Card contentType="imageLibrary" cardTitle="Bibliothèque d'images" loadedData={imageList} />

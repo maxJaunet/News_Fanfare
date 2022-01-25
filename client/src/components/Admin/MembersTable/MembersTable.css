@@ -30,3 +30,7 @@ p {
 .userAvatar {
   padding: 0.5rem;
 }
+
+.collapse {
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+.MemberForm {
+  padding: 1rem;
+}
+
+.formField {
+  width: 100%;
+}
+
+.MemberForm p {
+  font-size: 0.8rem;
+  padding: 0.5rem auto;
+  text-align: center;
+}

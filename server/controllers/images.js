@@ -49,7 +49,7 @@ export const getSingleImage = async (req, res) => {
 // UpdateOne / Dispatch
 
 export const editImage = async (req, res) => {
-  const filter = req.params.postId;
+  const filter = req.params.imageId;
   const update = req.body;
   console.log(update);
   try {
