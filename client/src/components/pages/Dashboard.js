@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, SpeedDial, SpeedDialIcon, Tooltip } from '@mui/material';
 import Card from '../Card/Card';
+import './styles.css';
 
 const Dashboard = () => {
 
@@ -9,7 +10,8 @@ const Dashboard = () => {
   const [eventList, setEventList] = useState([]);
   const [userList, setUserList] = useState([]);
   const [targetedData, setTargetedData] = useState(null);
-  
+  const [memberFormOpen, setMemberFormOpen] = useState(false);
+
   useEffect(() => {
       axios.get('http://localhost:5000/images')
           .then((allImages) => {
@@ -38,6 +40,7 @@ const Dashboard = () => {
       data && setTargetedData(data);
       console.log(data)
   };
+
 
   // test user to be changed to dynamic current user
   const currentUser = {
@@ -72,11 +75,25 @@ const Dashboard = () => {
             </Grid>
             <Grid item xs={12} sm={4}>
               <Card contentType="membersTable" onTargetedDataSelected={onTargetedDataSelected} loadedData={userList} cardTitle="Membres" />
-              <Card
-                contentType="addMemberForm"
-                cardTitle={(targetedData && targetedData.type === 'users') ? "Modifier Membre" : "Ajouter un membre"} 
-                initialData={(targetedData && targetedData.type === 'users') && targetedData} 
-              />
+              <div className="memberFormToggler">
+                <Tooltip title="Ajouter un Membre" placement="left">
+                  <SpeedDial
+                    icon={<SpeedDialIcon />}
+                    onClick={() => setMemberFormOpen(prevValue => !prevValue)}
+                    open={memberFormOpen}
+                  />
+                </Tooltip>
+              </div>
+              {
+                memberFormOpen && (
+                  <Card
+                    contentType="addMemberForm"
+                    cardTitle={(targetedData && targetedData.type === 'users') ? "Modifier Membre" : "Ajouter un membre"} 
+                    initialData={(targetedData && targetedData.type === 'users') && targetedData} 
+                  />
+                )
+              }
+              
             </Grid>
             <Grid item xs={12} sm={3}>
               <Card contentType="events" loadedData={eventList} cardTitle="Evènements à venir" />

@@ -5,3 +5,9 @@
     padding-left: 5rem;
     padding-right: 5rem;
 }
+
+.memberFormToggler {
+    position: relative;
+    top: -3rem;
+    left: 10rem;
+}

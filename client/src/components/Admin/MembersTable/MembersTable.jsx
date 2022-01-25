@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import {
   Avatar,
-  Collapse,
   Grid,
   Tooltip
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ActionButtons from '../../CoreUI/ActionButtons';
 import './MembersTable.css';
+import MemberForm from '../MemberForm/MemberForm';
 
 const MembersTable = ({ members, onUserSelected }) => {
   const [rowIndex, setRowIndex] = useState(0);

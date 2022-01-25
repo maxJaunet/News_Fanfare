@@ -60,7 +60,7 @@ const ActionButtons = ({targetType, hideStatus, alignment, targetID, onSelectedT
         return(
         <div>
             <Grid container justifyContent="center">
-                {actions.map((action, index) => (
+                {actions.map((action) => (
                     <Grid item key={Math.random()}>
                         <Tooltip title={action.name}>
                             <IconButton style={{color: action.color}} onClick={() => action.clickHandler(targetID, targetType)}>
